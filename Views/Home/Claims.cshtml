@@ -1,0 +1,43 @@
+﻿@model IEnumerable<AzureAdDemo1.Models.Claims>
+@{
+    ViewBag.Title = "Claims";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <h2>Welcome: @User.Identity.Name</h2>
+    <h3>Values from Identity</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                   DisplayName
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    PrincipalName
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DisplayName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrincipalName)
+                    </td>
+                </tr>
+            }
+                </tbody>
+            
+        </table>
+   
+}

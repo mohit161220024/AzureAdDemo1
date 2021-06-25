@@ -1,0 +1,19 @@
+﻿@using System.Security.Principal
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        var country = @User.Claims.ToList().FirstOrDefault(x => x.Type.Contains("ctry"))?.Value;
+        var surname= @User.Claims.ToList().FirstOrDefault(x => x.Type.Contains("surname"))?.Value;
+        <h1>Hello @surname from @country!</h1>
+        
+    }
+        <div class="text-center">
+            <h1 class="display-4">Welcome</h1>
+            <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        </div>

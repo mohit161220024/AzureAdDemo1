@@ -1,0 +1,12 @@
+﻿@{
+    if (User.HasClaim("roles", "GlobalAdmin"))
+    {
+        Layout = "_Layout2";
+    }
+    else 
+    {
+        
+            Layout = "_Layout";
+    }
+
+}

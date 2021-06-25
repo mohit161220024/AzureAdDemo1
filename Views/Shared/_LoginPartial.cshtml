@@ -1,0 +1,22 @@
+﻿@using System.Security.Principal
+@using Microsoft.Identity.Web.UI
+
+<ul class="navbar-nav">
+    @if (User.Identity.IsAuthenticated)
+    {
+        var abc = @User.Claims.ToList().FirstOrDefault(x => x.Type.Contains("email"))?.Value;
+
+        <li class="nav-item">
+            <span class="navbar-text text-dark">Hello @abc!</span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">Sign out</a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Sign in</a>
+        </li>
+    }
+</ul>
